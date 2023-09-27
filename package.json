@@ -1,0 +1,24 @@
+{
+  "name": "render-benchmark",
+  "version": "1.0.0",
+  "description": "A simple benchmark render for UI library's",
+  "main": "main.js",
+  "scripts": {
+    "benchmark": "node benchmark.js",
+    "test": "yarn test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mikaelhadler/render-benchmark.git"
+  },
+  "keywords": [
+    "web",
+    "benchmark"
+  ],
+  "author": "Mikael Hadler",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/mikaelhadler/render-benchmark/issues"
+  },
+  "homepage": "https://github.com/mikaelhadler/render-benchmark#readme"
+}
