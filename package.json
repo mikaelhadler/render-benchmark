@@ -3,6 +3,9 @@
   "version": "1.0.0",
   "description": "A simple benchmark render for UI library's",
   "main": "main.js",
+  "bin": {
+    "benchmark": "main.js"
+  },
   "scripts": {
     "benchmark": "node benchmark.js",
     "test": "yarn test"
@@ -20,5 +23,12 @@
   "bugs": {
     "url": "https://github.com/mikaelhadler/render-benchmark/issues"
   },
-  "homepage": "https://github.com/mikaelhadler/render-benchmark#readme"
+  "homepage": "https://github.com/mikaelhadler/render-benchmark#readme",
+  "dependencies": {
+    "chalk": "4.1.2",
+    "cli-table": "0.3.11",
+    "commander": "11.0.0",
+    "inquirer": "8.2.6",
+    "shelljs": "0.8.5"
+  }
 }
