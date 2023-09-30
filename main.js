@@ -50,8 +50,6 @@ program
 
 program.parse();
 
-program.parse();
-
 http.createServer(function (req, res) {
   console.log(chalk.green('Server created'));
 
