@@ -4,8 +4,10 @@ const packageJson = require('./package.json');
 const inquirer = require('inquirer');
 const chalk = require('chalk');
 const fs = require('fs');
+const path = require('path');
 const Table = require('cli-table');
-
+const http = require('http');
+const shell = require('shelljs');
 
 program
   .name('Benchmark UI Library')
@@ -27,7 +29,7 @@ const showSelectedChoices = (data) => {
     head: ['Framework', '%'],
     colWidths: [20, 10]
   });
-  data.map((choice, index) => table.push([choice, '0 %']));
+  data.map(choice => table.push([choice, '0 %']));
   console.log(table.toString());
 }
 
@@ -46,7 +48,24 @@ program
     showSelectedChoices(answers["framework"])
   });
 
-
-
-
 program.parse();
+
+http.createServer(function (req, res) {
+  console.log(chalk.green('Server created'));
+
+  if (req.method === 'GET') {
+    if (req.url === '/react.js') {
+      if (!packageJson.dependencies.react) {
+        shell.exec('npm install --save react react-dom');
+      }
+      const jsPath = path.join(`${__dirname}/frameworks/`, 'react.js');
+      const jsStream = fs.createReadStream(jsPath);
+      res.setHeader('Content-Type', 'application/javascript');
+      jsStream.pipe(res);
+    } else {
+      const htmlContent = fs.readFileSync(path.join(__dirname, 'index.html'), 'utf8');
+      res.setHeader('Content-Type', 'text/html');
+      res.end(htmlContent);
+    }
+  }
+}).listen(8080);
